@@ -14,14 +14,17 @@ func _input(event: InputEvent) -> void:
 			var projectile_forward = Vector2.from_angle(rotation)
 			new_projectile.fire(projectile_forward, 700, 0)
 			new_projectile.position = $ProjectilePoint.global_position
+			new_projectile.parent = self
 		if (event.button_index==2 and event.is_pressed()):
 			if not largeFired:
 				#TODO: make the projectile fire once, then retreivable.
 				var new_projectile = projectile_scene.instantiate()
 				get_parent().add_child(new_projectile)
 				var projectile_forward = Vector2.from_angle(rotation)
-				new_projectile.fire(projectile_forward, 300, 1)
+				new_projectile.fire(projectile_forward, 200, 1)
 				new_projectile.position = $ProjectilePoint.global_position
+				new_projectile.parent = self
+				largeFired = true
 
 func _physics_process(delta: float) -> void:
 	look_at(get_viewport().get_mouse_position())
