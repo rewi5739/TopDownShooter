@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkktgaephjrxv"]
+
+[ext_resource type="Script" path="res://actors/Projectile/projectile.gd" id="1_cv7jp"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5bgb5"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_inoa4"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_6j80s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cctvv"]
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_cv7jp")
+
+[node name="MainSprite" type="Sprite2D" parent="."]
+scale = Vector2(20, 20)
+texture = SubResource("CanvasTexture_5bgb5")
+
+[node name="Sprite2D" type="Sprite2D" parent="MainSprite"]
+position = Vector2(-0.65, 0)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("CanvasTexture_inoa4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="MainSprite"]
+position = Vector2(-0.95, 0)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("CanvasTexture_6j80s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cctvv")
+
+[node name="TimeToLive" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="TimeToLive" to="." method="_on_time_to_live_timeout"]

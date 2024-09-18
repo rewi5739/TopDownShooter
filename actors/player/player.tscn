@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://coe6fnslckp7y"]
+
+[ext_resource type="Script" path="res://actors/player/player.gd" id="1_ujme0"]
+[ext_resource type="PackedScene" uid="uid://dkktgaephjrxv" path="res://actors/Projectile/projectile.tscn" id="2_ua2qb"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_6mf2n"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gnkgj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhrtd"]
+size = Vector2(50, 50)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 15
+collision_mask = 15
+motion_mode = 1
+script = ExtResource("1_ujme0")
+projectile_scene = ExtResource("2_ua2qb")
+
+[node name="MainSprite" type="Sprite2D" parent="."]
+scale = Vector2(50, 50)
+texture = SubResource("CanvasTexture_6mf2n")
+
+[node name="Sprite2D" type="Sprite2D" parent="MainSprite"]
+position = Vector2(0.74, 0)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("CanvasTexture_gnkgj")
+
+[node name="MainCollider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nhrtd")
+
+[node name="ProjectilePoint" type="Node2D" parent="."]
+position = Vector2(37, 0)
