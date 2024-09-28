@@ -55,17 +55,17 @@ func _physics_process(delta: float) -> void:
 				$AnimationPlayer.play("0_idle")
 			else:
 				if (angle > 130 and angle < 230):
-					$AnimationPlayer.play("1_walk_right")
+					$AnimationPlayer.play("0_right")
 					direction = 2
 				if (angle > 230 and angle < 310):
-					$AnimationPlayer.play("1_walk_front")
+					$AnimationPlayer.play("0_front")
 					direction = 3
 				if (angle > 310 or angle < 50):
-					$AnimationPlayer.play("1_walk_left")
+					$AnimationPlayer.play("0_left")
 					direction = 0
 				if (angle > 50 and angle < 130):
 					#print("Fix up animation")
-					$AnimationPlayer.play("1_walk_up")
+					$AnimationPlayer.play("0_front")
 					direction = 1
 		1:
 			if (velocity.length() < 10):
@@ -104,4 +104,5 @@ func check_level():
 		if experience >= req_exp[level+1]:
 			level += 1
 			experience = 0
+	#TODO: This breaks when getting more than so many things
 	get_tree().get_root().get_node("Main/HUD").update_score(str(experience) +"/"+str(req_exp[level+1]), level)

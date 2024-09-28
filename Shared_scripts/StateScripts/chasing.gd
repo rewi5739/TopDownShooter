@@ -22,3 +22,5 @@ func process_state(delta: float):
 			#print("something")
 			running_state.target = potential_targets[0]
 			change_state.emit(running_state)
+	
+	body.update_animation()

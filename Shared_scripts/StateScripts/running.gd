@@ -23,3 +23,5 @@ func process_state(delta: float):
 	body.velocity = -(target.position - body.position).normalized() * chase_speed
 	body.move_and_slide()
 	
+	body.update_animation()
+	

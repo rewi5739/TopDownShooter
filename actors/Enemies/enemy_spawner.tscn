@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://susgu2kqchq5"]
 
 [ext_resource type="Script" path="res://actors/Enemies/enemy_spawner.gd" id="1_y77xf"]
-[ext_resource type="Script" path="res://actors/Enemies/stopped.gd" id="2_lham6"]
-[ext_resource type="Script" path="res://actors/Enemies/spawning.gd" id="3_rkabo"]
+[ext_resource type="Script" path="res://Shared_scripts/StateScripts/stopped.gd" id="2_lham6"]
+[ext_resource type="Script" path="res://Shared_scripts/StateScripts/spawning.gd" id="3_rkabo"]
 [ext_resource type="Texture2D" uid="uid://bnd0vlq22bpu4" path="res://Assets/Player.png" id="5_hpp0o"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_hqlfj"]
