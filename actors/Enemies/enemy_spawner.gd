@@ -1,7 +1,7 @@
 extends CharacterStateMachine
-class_name Enemy
+class_name EnemySpawner
 
-@export var hp : int = 3
+@export var hp : int = 10
 var Collectable = preload("res://collectable.tscn")
 
 func hit(damage_number : int):
@@ -17,3 +17,8 @@ func generate_loot():
 	experience_box.position = position
 	get_parent().call_deferred("add_child", experience_box)
 	#print(get_parent())
+
+
+
+func _on_timer_timeout() -> void:
+	current_state.timer_action()

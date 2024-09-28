@@ -5,6 +5,10 @@ var globSpeed: float = 0
 var globType: int
 var Pickupable: bool = false
 var parent: CharacterBody2D
+var damage: int = 1
+
+func set_damage(power : int):
+	damage = power
 
 func fire(direction: Vector2, speed: float, type : int):
 	globType = type
@@ -35,18 +39,16 @@ func _on_time_to_live_timeout() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body == parent:
 		if Pickupable:
-			parent.largeFired = false
+			parent.large_fired = false
 			queue_free()
 		return
 	var isTilemap : bool = body is TileMap
 	if globType:
 		globSpeed = 0
-		if not isTilemap:
-			(body as Enemy).hit(3)
 	else:
-		if not isTilemap:
-			(body as Enemy).hit(1)
 		queue_free()
+	if not isTilemap:
+		body.hit(damage)
 	#
 	#if body is TileMap:
 		#if globType:

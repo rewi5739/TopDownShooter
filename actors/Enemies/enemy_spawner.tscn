@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dibvph6g8bxii"]
+[gd_scene load_steps=10 format=3 uid="uid://susgu2kqchq5"]
 
-[ext_resource type="Script" path="res://actors/Enemies/basic_enemy.gd" id="1_4erkk"]
-[ext_resource type="Script" path="res://actors/Enemies/idle.gd" id="2_pkqkk"]
-[ext_resource type="Script" path="res://actors/Enemies/chasing.gd" id="3_x8ong"]
-[ext_resource type="Script" path="res://actors/Enemies/running.gd" id="4_431li"]
-[ext_resource type="Texture2D" uid="uid://bnd0vlq22bpu4" path="res://Assets/Player.png" id="5_u3hrb"]
+[ext_resource type="Script" path="res://actors/Enemies/enemy_spawner.gd" id="1_y77xf"]
+[ext_resource type="Script" path="res://actors/Enemies/stopped.gd" id="2_lham6"]
+[ext_resource type="Script" path="res://actors/Enemies/spawning.gd" id="3_rkabo"]
+[ext_resource type="Texture2D" uid="uid://bnd0vlq22bpu4" path="res://Assets/Player.png" id="5_hpp0o"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_hqlfj"]
 
@@ -24,16 +23,15 @@ _data = {
 "enemy_idle": SubResource("Animation_g0y4s")
 }
 
-[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
+[node name="EnemySpawner" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
 collision_layer = 2
 collision_mask = 3
 motion_mode = 1
-script = ExtResource("1_4erkk")
-initial_state = NodePath("States/Idle")
+script = ExtResource("1_y77xf")
+initial_state = NodePath("States/Stopped")
 
 [node name="MainSprite" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 0, 1, 1)
+modulate = Color(0, 0.828568, 0.695809, 1)
 scale = Vector2(15, 15)
 texture = SubResource("CanvasTexture_hqlfj")
 
@@ -42,24 +40,22 @@ shape = SubResource("RectangleShape2D_in83e")
 
 [node name="States" type="Node" parent="."]
 
-[node name="Idle" type="Node" parent="States"]
-script = ExtResource("2_pkqkk")
+[node name="Stopped" type="Node" parent="States"]
+script = ExtResource("2_lham6")
 
-[node name="Chasing" type="Node" parent="States"]
-script = ExtResource("3_x8ong")
-
-[node name="Running" type="Node" parent="States"]
-script = ExtResource("4_431li")
+[node name="Spawning" type="Node" parent="States"]
+script = ExtResource("3_rkabo")
 
 [node name="DetectionRange" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 5
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRange"]
 shape = SubResource("CircleShape2D_gksoo")
 
 [node name="CharacterSprite" type="Sprite2D" parent="."]
-texture = ExtResource("5_u3hrb")
+visible = false
+texture = ExtResource("5_hpp0o")
 flip_h = true
 hframes = 6
 vframes = 10
@@ -68,3 +64,9 @@ vframes = 10
 libraries = {
 "": SubResource("AnimationLibrary_6sxve")
 }
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

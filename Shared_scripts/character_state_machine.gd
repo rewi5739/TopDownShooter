@@ -12,7 +12,6 @@ func _ready() -> void:
 			all_states.append(child)
 			#connecting signal
 			child.change_state.connect(on_change_state)
-			
 			child.body = self
 			child.initialize()
 		else:

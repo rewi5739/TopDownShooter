@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcbqqnlguj3x5"]
+
+[ext_resource type="Script" path="res://Shared_scripts/hud.gd" id="1_j81fd"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_j81fd")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 110.0
+offset_bottom = 55.0
+text = "Experience: 0/4
+Level: 0"
