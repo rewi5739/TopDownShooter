@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://rlpjqsx81k47"]
+[gd_scene load_steps=23 format=3 uid="uid://rlpjqsx81k47"]
 
+[ext_resource type="Script" path="res://Shared_scripts/lvl_manager.gd" id="1_goefn"]
 [ext_resource type="Texture2D" uid="uid://c8k0nyspwdfhv" path="res://Assets/free_ground_autotile_17.png" id="1_hnsbe"]
 [ext_resource type="PackedScene" uid="uid://coe6fnslckp7y" path="res://actors/player/player.tscn" id="1_tc4bk"]
 [ext_resource type="Texture2D" uid="uid://pxlyhakrcte0" path="res://Assets/free_ground_autotile_2.png" id="2_lrm0f"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://rdlhy6r0ol2e" path="res://collectable.tscn" id="10_rykvs"]
 [ext_resource type="PackedScene" uid="uid://dcbqqnlguj3x5" path="res://Shared_scripts/hud.tscn" id="11_mhyvg"]
 [ext_resource type="PackedScene" uid="uid://susgu2kqchq5" path="res://actors/Enemies/enemy_spawner.tscn" id="12_ygbkx"]
+[ext_resource type="AudioStream" uid="uid://cj0ck6yylosw6" path="res://Assets/Music and Sound/10 Village Theme 03 -Loop-.mp3" id="13_0q8vj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8lxxf"]
 texture = ExtResource("1_hnsbe")
@@ -267,6 +269,8 @@ sources/5 = SubResource("TileSetAtlasSource_cgaq0")
 sources/6 = SubResource("TileSetAtlasSource_4axxo")
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_goefn")
+bg_music = ExtResource("13_0q8vj")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(550, 196)
@@ -282,6 +286,10 @@ scale = Vector2(2, 2)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 offset = Vector2(0.1, 0.1)
+limit_left = 0
+limit_top = 0
+limit_right = 1140
+limit_bottom = 640
 position_smoothing_enabled = true
 
 [node name="BasicEnemy" parent="." instance=ExtResource("6_kptba")]
@@ -307,4 +315,8 @@ position = Vector2(392, 414)
 [node name="HUD" parent="." instance=ExtResource("11_mhyvg")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("12_ygbkx")]
-position = Vector2(385, 216)
+position = Vector2(705, 189)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+visible = false
+autoplay = true

@@ -11,7 +11,7 @@
 [sub_resource type="CanvasTexture" id="CanvasTexture_gnkgj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhrtd"]
-size = Vector2(7, 7)
+size = Vector2(15, 15)
 
 [sub_resource type="Animation" id="Animation_qxe60"]
 resource_name = "0_front"
@@ -887,5 +887,3 @@ visible = false
 position = Vector2(8, 2.84217e-14)
 scale = Vector2(0.4375, 0.4375)
 texture = ExtResource("5_exigr")
-
-[node name="States" type="Node" parent="."]

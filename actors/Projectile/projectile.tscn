@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkktgaephjrxv"]
+[gd_scene load_steps=7 format=3 uid="uid://dkktgaephjrxv"]
 
 [ext_resource type="Script" path="res://actors/Projectile/projectile.gd" id="1_cv7jp"]
+[ext_resource type="Texture2D" uid="uid://dpihvpc5iam87" path="res://Assets/Outdoor_Decor_Free.png" id="2_hfr3i"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_5bgb5"]
 
@@ -8,8 +9,8 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_6j80s"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cctvv"]
-radius = 5.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rv7r"]
+size = Vector2(15, 12)
 
 [node name="Projectile" type="Area2D"]
 collision_layer = 4
@@ -31,11 +32,18 @@ scale = Vector2(0.2, 0.2)
 texture = SubResource("CanvasTexture_6j80s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_cctvv")
+shape = SubResource("RectangleShape2D_5rv7r")
 
 [node name="TimeToLive" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="RockSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_hfr3i")
+hframes = 7
+vframes = 12
+frame = 16
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="TimeToLive" to="." method="_on_time_to_live_timeout"]

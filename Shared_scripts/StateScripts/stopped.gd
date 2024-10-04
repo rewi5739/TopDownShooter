@@ -4,9 +4,13 @@ var detect_range: Area2D
 var spawning_state : State
 
 func timer_action():
-	print("in stopped State")
+	#print("in stopped State")
 	var body_list = detect_range.get_overlapping_bodies()
-	if body_list.size() < 3:
+	var adjustment = 0
+	for body in body_list:
+		if body is TileMap:
+			adjustment = -1
+	if body_list.size() + adjustment < 3:
 		change_state.emit(spawning_state)
 
 
@@ -16,10 +20,10 @@ func initialize():
 
 
 func on_enter_state():
-	pass
+	main_sprite.modulate = Color(0,1,0)
 
 func on_exit_state():
-	pass
+	main_sprite.modulate = Color(1,0,0)
 
 func process_state(delta : float):
 	pass

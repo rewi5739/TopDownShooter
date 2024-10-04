@@ -13,6 +13,8 @@ func _ready() -> void:
 			#connecting signal
 			child.change_state.connect(on_change_state)
 			child.body = self
+			child.main_sprite = get_node("MainSprite")
+			child.main_collider = get_node("MainCollider")
 			child.initialize()
 		else:
 			push_warning("Child " + child.name + " Is not a state for " + self.name)

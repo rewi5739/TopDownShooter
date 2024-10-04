@@ -2,14 +2,18 @@ extends CharacterStateMachine
 class_name Enemy
 
 @export var hp : int = 3
+@export var attack_sfx : Resource
+@export var death_sfx : Resource
 var Collectable = preload("res://collectable.tscn")
 var direction:int = 0
+
 
 func hit(damage_number : int):
 	hp -= damage_number
 	if (hp <= 0):
 		#add somehting for state machine if neciscary
 		generate_loot()
+		GlobalAudioManager.play_sfx(death_sfx)
 		queue_free()
 
 func generate_loot():
@@ -48,3 +52,12 @@ func update_animation():
 			#print("Fix up animation")
 			$AnimationPlayer.play("enemy_run_up")
 			direction = 1
+
+func attack_animation():
+	var dirList = ["left", "up", "right", "front"]
+	$AnimationPlayer.play("enemy_attack_" + dirList[direction])
+	GlobalAudioManager.play_sfx(attack_sfx, 0.5)
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name.contains("attack"):
+		current_state._finish_attack()

@@ -17,6 +17,9 @@ func fire(direction: Vector2, speed: float, type : int):
 		look_at(direction)
 		scale = Vector2(2,2)
 		velocity = direction
+		$MainSprite.visible = false
+		$RockSprite.visible = true
+		$RockSprite.flip_v = (rotation < -PI/2 or rotation > PI/2)
 
 func _physics_process(delta: float) -> void:
 	if globType:
