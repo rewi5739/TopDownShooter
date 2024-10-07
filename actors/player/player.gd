@@ -2,14 +2,16 @@ extends CharacterStateMachine
 
 @export var projectile_scene : Resource #can also preload the thing using file path
 @export var move_speed : float = 150
+@export var health : int = 10
 var large_fired: bool = false
 var direction = 2
 var req_exp = [0, 4, 16]
 var level : int = 0
 var experience : int = 0
 var width = 7
-var health = 0
 
+func _init() -> void:
+	ScoreManager.set_health(str(health))
 
 func _input(event: InputEvent) -> void:
 	if (event is InputEventMouseButton):
@@ -132,7 +134,7 @@ func check_level():
 			level += 1
 			experience = 0
 			update_hitbox()
-		print("check level to score manager" + str(experience) + str(level))
+		#print("check level to score manager" + str(experience) + str(level))
 		ScoreManager.set_exp(str(experience) +"/"+ str(req_exp[level+1]))
 		ScoreManager.set_lvl(str(level))
 	else:
@@ -150,3 +152,9 @@ func update_hitbox():
 		2:
 			collider.shape.size = Vector2(30,30)
 			width = 30
+
+func hit(damage:int):
+	health -= damage
+	if health <= 0:
+		ScoreManager.game_over()
+	ScoreManager.set_health(str(health))

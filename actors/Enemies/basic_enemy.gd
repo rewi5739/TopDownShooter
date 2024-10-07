@@ -7,6 +7,8 @@ class_name Enemy
 var Collectable = preload("res://collectable.tscn")
 var direction:int = 0
 
+signal attack(damage:int)
+
 
 func hit(damage_number : int):
 	hp -= damage_number
@@ -56,7 +58,7 @@ func update_animation():
 func attack_animation():
 	var dirList = ["left", "up", "right", "front"]
 	$AnimationPlayer.play("enemy_attack_" + dirList[direction])
-	GlobalAudioManager.play_sfx(attack_sfx, 0.5)
+	GlobalAudioManager.play_sfx(attack_sfx)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name.contains("attack"):

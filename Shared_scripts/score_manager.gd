@@ -12,10 +12,15 @@ func set_health(num: String):
 	score_updated.emit(cur_health, cur_exp, cur_lvl)
 
 func set_exp(num: String):
-	print("set exp called")
+	#print("set exp called")
 	cur_exp = num
 	score_updated.emit(cur_health, cur_exp, cur_lvl)
 
 func set_lvl(num: String):
 	cur_lvl = num
 	score_updated.emit(cur_health, cur_exp, cur_lvl)
+
+func game_over():
+	#use this to end the game
+	get_tree().quit()
+	pass

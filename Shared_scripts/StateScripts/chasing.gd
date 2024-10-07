@@ -30,3 +30,4 @@ func process_state(delta: float):
 	if (body.position - target.position).length() < target.width/2 + main_collider.shape.size.x/2 + 5:
 		attacking_state.direction = body.direction
 		change_state.emit(attacking_state)
+		target.hit(1)
