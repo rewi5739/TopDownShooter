@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://jiuxnbasqrip"]
+
+[ext_resource type="Script" path="res://start_screen.gd" id="1_ety4l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_drcxq"]
+size = Vector2(44, 16)
+
+[node name="StartScreen" type="CanvasLayer"]
+script = ExtResource("1_ety4l")
+
+[node name="StartLabel" type="Label" parent="."]
+offset_left = 221.0
+offset_top = 154.0
+offset_right = 261.0
+offset_bottom = 177.0
+text = "Start"
+
+[node name="StartButtonArea" type="Area2D" parent="StartLabel"]
+
+[node name="SBCollisionShape" type="CollisionShape2D" parent="StartLabel/StartButtonArea"]
+position = Vector2(19, 12)
+shape = SubResource("RectangleShape2D_drcxq")
+
+[connection signal="input_event" from="StartLabel/StartButtonArea" to="." method="_on_start_button_area_input_event"]

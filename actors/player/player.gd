@@ -101,26 +101,26 @@ func _physics_process(delta: float) -> void:
 			if (velocity.length() < 10):
 				match direction:
 					0:
-						$AnimationPlayer.play("1_idle_left")
+						$AnimationPlayer.play("2_idle_left")
 					1:
-						$AnimationPlayer.play("1_idle_up")
+						$AnimationPlayer.play("2_idle_up")
 					2:
-						$AnimationPlayer.play("1_idle_right")
+						$AnimationPlayer.play("2_idle_right")
 					3:
-						$AnimationPlayer.play("1_idle_front")
+						$AnimationPlayer.play("2_idle_front")
 			else:
 				if (angle > 130 and angle < 230):
-					$AnimationPlayer.play("1_walk_right")
+					$AnimationPlayer.play("2_walk_right")
 					direction = 2
 				if (angle > 230 and angle < 310):
-					$AnimationPlayer.play("1_walk_front")
+					$AnimationPlayer.play("2_walk_front")
 					direction = 3
-				if (angle > 310 or angle < 50):
-					$AnimationPlayer.play("1_walk_left")
+				if (angle > 310 or angle < 50): 
+					$AnimationPlayer.play("2_walk_left")
 					direction = 0
 				if (angle > 50 and angle < 130):
 					#print("Fix up animation")
-					$AnimationPlayer.play("1_walk_up")
+					$AnimationPlayer.play("2_walk_up")
 					direction = 1
 
 func collectable_collected(amount: int):
@@ -135,6 +135,7 @@ func check_level():
 			experience = 0
 			update_hitbox()
 		#print("check level to score manager" + str(experience) + str(level))
+	if level < 2:
 		ScoreManager.set_exp(str(experience) +"/"+ str(req_exp[level+1]))
 		ScoreManager.set_lvl(str(level))
 	else:

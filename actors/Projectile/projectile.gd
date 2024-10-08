@@ -20,6 +20,8 @@ func fire(direction: Vector2, speed: float, type : int):
 		$MainSprite.visible = false
 		$RockSprite.visible = true
 		$RockSprite.flip_v = (rotation < -PI/2 or rotation > PI/2)
+	else:
+		set_collision_mask_value(5, false)
 
 func _physics_process(delta: float) -> void:
 	if globType:
