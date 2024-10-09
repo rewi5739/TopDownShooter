@@ -10,6 +10,6 @@ func _update_score(health: String, experience : String, level: String):
 	label_text += "Health: " + health + "\n"
 	label_text += "Experience: " + experience + "\n"
 	label_text += "Level: " + level + "\n"
-	print(label_text)
+	#print(label_text)
 	
 	$Label.text = label_text

@@ -20,10 +20,10 @@ func initialize():
 
 
 func on_enter_state():
-	main_sprite.modulate = Color(0,1,0)
+	body.play_animation("fire_start")
 
 func on_exit_state():
-	main_sprite.modulate = Color(1,0,0)
+	body.play_animation("fire_idle")
 
 func process_state(delta : float):
 	pass

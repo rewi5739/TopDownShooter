@@ -27,7 +27,8 @@ func process_state(delta: float):
 	
 	body.update_animation()
 	
-	if (body.position - target.position).length() < target.width/2 + main_collider.shape.size.x/2 + 5:
+	#print((body.position - target.position).length(), " < ", target.width + main_collider.shape.size.x/2 + 5)
+	if (body.position - target.position).length() < target.width + main_collider.shape.size.x/2 + 5:
 		attacking_state.direction = body.direction
 		change_state.emit(attacking_state)
 		target.hit(1)

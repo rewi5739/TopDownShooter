@@ -18,7 +18,13 @@ func generate_loot():
 	get_parent().call_deferred("add_child", experience_box)
 	#print(get_parent())
 
-
+func play_animation(anim_name: String):
+	$AnimationPlayer.play(anim_name)
 
 func _on_timer_timeout() -> void:
 	current_state.timer_action()
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if (anim_name.contains("start")):
+		play_animation("fire_on")

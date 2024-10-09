@@ -320,3 +320,15 @@ position = Vector2(705, 189)
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 visible = false
 autoplay = true
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("12_ygbkx")]
+position = Vector2(170, 209)
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("12_ygbkx")]
+position = Vector2(132, 505)
+
+[node name="EnemySpawner4" parent="." instance=ExtResource("12_ygbkx")]
+position = Vector2(973, 491)
+
+[node name="EnemySpawner5" parent="." instance=ExtResource("12_ygbkx")]
+position = Vector2(679, 556)

@@ -10,5 +10,6 @@ offset_left = 7.0
 offset_top = 6.0
 offset_right = 110.0
 offset_bottom = 55.0
-text = "Experience: 0/4
+text = "Health: 4
+Experience: 0/4
 Level: 0"

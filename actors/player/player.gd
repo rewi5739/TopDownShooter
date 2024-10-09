@@ -10,8 +10,10 @@ var level : int = 0
 var experience : int = 0
 var width = 7
 
-func _init() -> void:
+func _ready() -> void:
 	ScoreManager.set_health(str(health))
+	ScoreManager.set_exp("0")
+	ScoreManager.set_lvl("0")
 
 func _input(event: InputEvent) -> void:
 	if (event is InputEventMouseButton):
@@ -150,9 +152,11 @@ func update_hitbox():
 		1:
 			collider.shape.size = Vector2(15,15)
 			width = 15
+			hit(-6)
 		2:
 			collider.shape.size = Vector2(30,30)
 			width = 30
+			hit(-20)
 
 func hit(damage:int):
 	health -= damage

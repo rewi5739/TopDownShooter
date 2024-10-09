@@ -2,17 +2,17 @@ extends AudioStreamPlayer2D
 
 var current_track_name : String = ""
 #var current_music_track : AudioStream
-var usr_vol: float = 0.5
+var usr_vol: float = -20
 var childList = []
 
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("vol_up"):
-		usr_vol += 0.05
+		usr_vol += 5
 		print("audio up" + str(usr_vol))
 		thing()
 	if event.is_action_pressed("vol_down"):
-		usr_vol -= 0.05
+		usr_vol -= 5
 		print("audio down" + str(usr_vol))
 		thing()
 
@@ -21,7 +21,7 @@ func play_track(new_stream : AudioStream):
 		return
 	
 	stream = new_stream
-	set_volume_db(-2)
+	set_volume_db(usr_vol)
 	play()
 
 func play_sfx(new_stream : AudioStream):
