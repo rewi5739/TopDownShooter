@@ -21,7 +21,7 @@ func play_track(new_stream : AudioStream):
 		return
 	
 	stream = new_stream
-	set_volume_db(usr_vol)
+	set_volume_db(usr_vol - 10)
 	play()
 
 func play_sfx(new_stream : AudioStream):

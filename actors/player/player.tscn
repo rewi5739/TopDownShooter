@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://coe6fnslckp7y"]
+[gd_scene load_steps=32 format=3 uid="uid://coe6fnslckp7y"]
 
 [ext_resource type="Script" path="res://actors/player/player.gd" id="1_ujme0"]
 [ext_resource type="PackedScene" uid="uid://dkktgaephjrxv" path="res://actors/Projectile/projectile.tscn" id="2_ua2qb"]
 [ext_resource type="Texture2D" uid="uid://bnd0vlq22bpu4" path="res://Assets/Player.png" id="3_pxso1"]
+[ext_resource type="AudioStream" uid="uid://scqulh7sima2" path="res://Assets/Music and Sound/Fire_AttackF3.wav" id="3_y3p2s"]
 [ext_resource type="Texture2D" uid="uid://dwbrsiq3g7sxi" path="res://Assets/Dragon Pixel Art.png" id="4_h7emo"]
 [ext_resource type="Texture2D" uid="uid://4an8yhtbdh6i" path="res://Assets/Revolver.png" id="5_exigr"]
 
@@ -1390,6 +1391,7 @@ motion_mode = 1
 script = ExtResource("1_ujme0")
 projectile_scene = ExtResource("2_ua2qb")
 health = 4
+fire_sfx = ExtResource("3_y3p2s")
 
 [node name="OldSprite" type="Sprite2D" parent="."]
 visible = false

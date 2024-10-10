@@ -3,6 +3,7 @@ extends CharacterStateMachine
 @export var projectile_scene : Resource #can also preload the thing using file path
 @export var move_speed : float = 150
 @export var health : int = 10
+@export var fire_sfx : Resource
 var large_fired: bool = false
 var direction = 2
 var req_exp = [0, 4, 16]
@@ -27,6 +28,7 @@ func _input(event: InputEvent) -> void:
 			new_projectile.fire(projectile_forward, 700, 0)
 			new_projectile.position = $Weapon/ProjectilePoint.global_position
 			new_projectile.parent = self
+			GlobalAudioManager.play_sfx(fire_sfx)
 		if (event.button_index==2 and event.is_pressed() and (not large_fired) and level >= 1):
 			var new_projectile = projectile_scene.instantiate()
 			new_projectile.set_damage(3)

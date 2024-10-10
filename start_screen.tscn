@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://jiuxnbasqrip"]
+[gd_scene load_steps=4 format=3 uid="uid://jiuxnbasqrip"]
 
 [ext_resource type="Script" path="res://start_screen.gd" id="1_ety4l"]
+[ext_resource type="Texture2D" uid="uid://qp4coi4yllpg" path="res://Assets/StartScreen.png" id="2_evjf1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drcxq"]
 size = Vector2(44, 16)
 
 [node name="StartScreen" type="CanvasLayer"]
 script = ExtResource("1_ety4l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(249, 114)
+scale = Vector2(0.259664, 0.259664)
+texture = ExtResource("2_evjf1")
 
 [node name="StartLabel" type="Label" parent="."]
 offset_left = 221.0
@@ -20,5 +26,23 @@ text = "Start"
 [node name="SBCollisionShape" type="CollisionShape2D" parent="StartLabel/StartButtonArea"]
 position = Vector2(19, 12)
 shape = SubResource("RectangleShape2D_drcxq")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 11.0
+offset_top = 18.0
+offset_right = 455.0
+offset_bottom = 240.0
+theme_override_font_sizes/font_size = 15
+text = ", & . for volume                                              Destroy the campfires
+wasd for directions
+L & R click for attack"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 4.0
+offset_top = 233.0
+offset_right = 358.0
+offset_bottom = 256.0
+theme_override_font_sizes/font_size = 12
+text = "Music from Jermy Blake, Sprites from Kemni, Matheus frantz & LukeThePolice. Sound effects from Leohapaz and "
 
 [connection signal="input_event" from="StartLabel/StartButtonArea" to="." method="_on_start_button_area_input_event"]

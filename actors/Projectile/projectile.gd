@@ -1,5 +1,7 @@
 extends Area2D
 
+@onready var animator = $AnimationPlayer
+@export var hit_sfx: Resource
 var velocity: Vector2 = Vector2(0, 0)
 var globSpeed: float = 0
 var globType: int
@@ -10,6 +12,9 @@ var damage: int = 1
 func set_damage(power : int):
 	damage = power
 
+func _ready() -> void:
+	animator.play("Fire")
+
 func fire(direction: Vector2, speed: float, type : int):
 	globType = type
 	globSpeed = speed
@@ -17,7 +22,7 @@ func fire(direction: Vector2, speed: float, type : int):
 		look_at(direction)
 		scale = Vector2(2,2)
 		velocity = direction
-		$MainSprite.visible = false
+		$FireSprite.visible = false
 		$RockSprite.visible = true
 		$RockSprite.flip_v = (rotation < -PI/2 or rotation > PI/2)
 	else:
@@ -29,14 +34,19 @@ func _physics_process(delta: float) -> void:
 		globSpeed -= globSpeed * 0.4 * delta
 	else:
 		#when globType == 0:
-		velocity = (get_global_mouse_position() - position).normalized() * globSpeed
-		look_at(get_global_mouse_position())
-		position += velocity * delta
+		if (get_global_mouse_position() - position).length() < globSpeed * delta:
+			look_at(get_global_mouse_position())
+			position = get_global_mouse_position()
+		else:
+			velocity = (get_global_mouse_position() - position).normalized() * globSpeed
+			look_at(get_global_mouse_position())
+			position += velocity * delta
 
 
 func _on_time_to_live_timeout() -> void:
 	if not globType:
 		queue_free()
+		GlobalAudioManager.play_sfx(hit_sfx)
 	else:
 		Pickupable = true
 

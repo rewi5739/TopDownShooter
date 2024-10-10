@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://i3xqpi208lp7"]
+
+[ext_resource type="Texture2D" uid="uid://6vtcnuy8sqkn" path="res://Assets/10-8-24 EndScreen.png" id="1_r4rpu"]
+
+[node name="EndScreen" type="CanvasLayer"]
+
+[node name="MainSprite" type="Sprite2D" parent="."]
+position = Vector2(243, 96)
+scale = Vector2(0.107292, 0.107292)
+texture = ExtResource("1_r4rpu")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 204.0
+offset_top = 17.0
+offset_right = 244.0
+offset_bottom = 40.0
+text = "Success!"
